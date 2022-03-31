@@ -21,4 +21,12 @@ public class DataBase {
     public static Collection<User> findAll() {
         return users.values();
     }
+    
+    public static void update(User user) {
+    	User findedUser = findUserById(user.getUserId());
+    	findedUser.setPassword(user.getPassword());
+    	findedUser.setName(user.getName());
+    	findedUser.setEmail(user.getEmail());
+    	users.put(user.getUserId(),findedUser);
+	}
 }

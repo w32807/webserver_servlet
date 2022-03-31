@@ -9,13 +9,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 
 @WebServlet("/user/create")
 public class CreateUserServlet extends HttpServlet {
+	
+	private static final Logger logger = LoggerFactory.getLogger(CreateUserServlet.class);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	logger.info("CreateUserServlet doPost run");
         User user = new User(
                 req.getParameter("userId"),
                 req.getParameter("password"),
