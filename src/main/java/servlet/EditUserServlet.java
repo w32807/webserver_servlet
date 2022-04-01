@@ -25,7 +25,6 @@ public class EditUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	logger.info("EditUserServlet doGet run");
     	String userId = (String) req.getParameter("userId");
-    	logger.info("userId {}", userId);
         req.setAttribute("user", DataBase.findUserById(userId));
         RequestDispatcher rd = req.getRequestDispatcher("/user/editForm.jsp"); // jsp 파일 연결
         rd.forward(req, resp);

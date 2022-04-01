@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import constants.SessionConst;
 import db.DataBase;
 import dto.User;
 
@@ -36,7 +37,7 @@ public class LoginServlet extends HttpServlet{
 		
 		if(password.equals(user.getPassword())) {
 			HttpSession session = req.getSession();
-			session.setAttribute("user", user);
+			session.setAttribute(SessionConst.LOGIN_USER, user);
 			resp.sendRedirect("/user/list");
 		}else {
 	        RequestDispatcher rd = req.getRequestDispatcher("/user/login_failed.jsp");

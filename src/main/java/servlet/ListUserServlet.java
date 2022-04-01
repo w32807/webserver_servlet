@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import constants.SessionConst;
+
 import java.io.IOException;
 
 @WebServlet("/user/list")
@@ -35,7 +37,7 @@ public class ListUserServlet extends HttpServlet {
     
     private boolean isLogin(HttpServletRequest req) {
 		HttpSession session = req.getSession();
-		User user = (User) session.getAttribute("user");
+		User user = (User) session.getAttribute(SessionConst.LOGIN_USER);
 		return (user == null) ? false : true;
 	}
 }
