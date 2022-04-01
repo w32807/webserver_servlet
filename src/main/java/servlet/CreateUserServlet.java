@@ -4,6 +4,7 @@ package servlet;
 import db.DataBase;
 import dto.User;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,12 @@ import java.io.IOException;
 public class CreateUserServlet extends HttpServlet {
 	
 	private static final Logger logger = LoggerFactory.getLogger(CreateUserServlet.class);
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher rd = req.getRequestDispatcher("/user/form.jsp"); // jsp 파일 연결
+        rd.forward(req, resp);
+	}
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
